@@ -1,0 +1,48 @@
+{
+  "name": "bootstrap-v5-starter",
+  "version": "1.0",
+  "description": "Bootstrap v5 starter",
+  "author": "Sebastian",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heqma/Bootstrap-v5-starter.git"
+  },
+  "scripts": {
+    "build": "npm run css",
+    "css-compile": "sass --style compressed --source-map --embed-sources --no-error-css --load-path=node_modules assets/scss/:assets/css/",
+    "css-lint": "stylelint scss/",
+    "css-prefix": "postcss --replace assets/css/style.css --use autoprefixer --map",
+    "css-purge": "purgecss --keyframes --css assets/css/style.css --content index.html \"node_modules/bootstrap/js/dist/dom/*.js\" \"node_modules/bootstrap/js/dist/{base-component,dropdown,modal,offcanvas}.js\" --output assets/css/",
+    "css": "npm-run-all css-compile css-prefix",
+    "server": "serve --listen 3000",
+    "start": "npm-run-all --parallel watch server",
+    "watch": "nodemon -e html,scss -x \"npm run css\"",
+    "test": "npm-run-all css-lint css"
+  },
+  "keywords": [
+    "bootstrap",
+    "sass",
+    "css",
+    "javascript",
+    "starter",
+    "template"
+  ],
+  "dependencies": {
+    "@popperjs/core": "^2.9.3",
+    "bootstrap": "5.2.0-beta1",
+    "bootstrap-icons": "^1.8.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "nodemon": "^2.0.16",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0",
+    "purgecss": "^4.1.3",
+    "sass": "^1.52.2",
+    "serve": "^13.0.2",
+    "stylelint": "^14.8.5",
+    "stylelint-config-twbs-bootstrap": "^4.0.0"
+  }
+}
